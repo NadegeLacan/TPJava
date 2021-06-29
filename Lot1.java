@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Lot1
 {	
 	public static void main (String[] args)
@@ -29,7 +31,8 @@ public class Lot1
 		
 		afficherPlatDuJour("oeufs mimosas",3,"entrecôte frites",10,"banoffee",5);
 		
-		System.out.println(mentionBachelier(0.85));
+		System.out.println(mentionBachelierBis(0.85f));
+		categorieAge();
 	}
 	
 	public static String HelloWord()
@@ -98,14 +101,14 @@ public class Lot1
 		float platTTC = calculTTC(platHT);
 		float dessertTTC = calculTTC(dessertHT);
 	
-		System.out.println("Le chef vous propose aujourd'hui : ");
-		System.out.print("- Entrée : " + entree + "(" + entreTTC + "€) \n");
-		System.out.print("- Plat : " + plat + "(" + platTTC + "€) \n");
-		System.out.print("- Dessert : " + dessert + "(" + dessertTTC + "€) \n");
-		System.out.println("Nous remercions notre aimable clientèle par avance de vouloir régler en bitcoin");
+		afficher("Le chef vous propose aujourd'hui : ");
+		afficher("- Entrée : " + entree + "(" + entreTTC + "€) \n");
+		afficher("- Plat : " + plat + "(" + platTTC + "€) \n");
+		afficher("- Dessert : " + dessert + "(" + dessertTTC + "€) \n");
+		afficher("Nous remercions notre aimable clientèle par avance de vouloir régler en bitcoin");
 	}
 	
-	public static String mentionBachelier(double note)
+	public static String mentionBachelier(float note)
 	{
 		String mention;
 		if (note<0.5)
@@ -145,5 +148,40 @@ public class Lot1
 			}
 		}
 		return mention;
+	}
+
+
+	public static String mentionBachelierBis(float note)
+	{
+		if (note<0.5) return "pas réussi";
+		if (note<0.6) return "réussi";
+		if (note<0.7) return "satisfaction";
+		if (note<0.8) return "distinction";
+		if (note<0.9) return "une grande distinction";
+		
+		return "la plus grande distinction";
+
+	}
+
+	
+	public static void categorieAge()
+	{
+		Scanner scan=new Scanner(System.in);
+		
+		System.out.println("quel est ton age ?");
+		
+		int age=scan.nextInt();
+		
+		scan.nextLine();
+		
+		String texteAAfficher;
+		
+		if (age<=21)
+			texteAAfficher="Ca va tu es jeune !";
+		else	
+			texteAAfficher="Oh le vieux!";
+		
+		System.out.println(texteAAfficher);
+		scan.close();
 	}
 }

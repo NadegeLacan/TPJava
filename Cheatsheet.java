@@ -54,13 +54,7 @@ public class Cheatsheet
 		int randomInt = 1+ (int)Math.floor(0.5+Math.random()*11);
 		System.out.println(randomInt);		
 		
-		bonjour();
-		
 	}
 	
-	public static void bonjour()
-	{
-		int uneAutreVariable=10;
-		System.out.println("bonjour");
-	}
+
 }
