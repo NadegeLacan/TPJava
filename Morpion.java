@@ -13,8 +13,9 @@ public class Morpion
 	static char c9='9';
 	static int joueur=1;
 	static int nbTour=0;
+	static int joueurPc=0;
 	
-	public static void main(String[] arguments)
+	public static void main(String[] arguments) throws InterruptedException
 	{
 		boolean jouerEncore=true;
 		Scanner scanEncore=new Scanner(System.in);
@@ -27,6 +28,7 @@ public class Morpion
 			{
 				jouerUnTour();
 				afficherGrille();
+				Thread.sleep(1000);
 				if (controleGagnant()!=0)
 				{
 					System.out.println("Bravo joueur"+controleGagnant()+" Vous avez gagné !!!");
@@ -36,8 +38,7 @@ public class Morpion
 			
 			System.out.println("Voulez-vous rejouer une partie ? oui/non");
 			String encore=scanEncore.next();
-			System.out.println(encore+"123");
-			if (encore=="non") jouerEncore=false;
+			if (encore.equals("non")) jouerEncore=false;
 		}
 	}
 	
@@ -50,67 +51,61 @@ public class Morpion
 	
 	public static void jouerUnTour()
 	{
-		Scanner scan=new Scanner(System.in);
-		System.out.println("Joueur"+joueur+" , choisissez une case entre 1 et 9 :");
-		int choix=scan.nextInt();
-		
+		int choix=0;
+
+		switch (joueurPc)
+		{
+			case 0 :
+				choix=choixJoueur();
+				break;
+			case 1 :
+				if (joueur==1) choix=choixJoueur();
+				else choix=choixPC();
+				break;
+			case 2 :
+				choix=choixPC();
+				break;
+		}
+
 		if (choix>0 && choix<10)
 		{
 			switch (choix)
 			{
 				case 1 :
-					if (c1=='1') 
-						c1=remplirCase();
-					else 
-						System.out.println("Case déjà prise, veuillez recommencer ");
+					if (c1=='1') c1=remplirCase();
+					else casePrise();
 					break;
 				case 2 : 
-					if (c2=='2') 
-						c2=remplirCase();
-					else 
-						System.out.println("Case déjà prise, veuillez recommencer ");
+					if (c2=='2') c2=remplirCase();
+					else casePrise();
 					break;
 				case 3 : 
-					if (c3=='3') 
-						c3=remplirCase();
-					else 
-						System.out.println("Case déjà prise, veuillez recommencer ");
+					if (c3=='3') c3=remplirCase();
+					else casePrise();
 					break;
 				case 4 : 
-					if (c4=='4') 
-						c4=remplirCase();
-					else 
-						System.out.println("Case déjà prise, veuillez recommencer ");
+					if (c4=='4') c4=remplirCase();
+					else casePrise();
 					break;
 				case 5 : 
-					if (c5=='5') 
-						c5=remplirCase();
-					else 
-						System.out.println("Case déjà prise, veuillez recommencer ");
+					if (c5=='5') c5=remplirCase();
+					else casePrise();
 					break;			
 				case 6 : 
-					if (c6=='6') 
-						c6=remplirCase();
-					else 
-						System.out.println("Case déjà prise, veuillez recommencer ");
+					if (c6=='6') c6=remplirCase();
+					else casePrise();
 					break;
 				case 7 : 
-					if (c7=='7') 
-						c7=remplirCase();
-					else 
-						System.out.println("Case déjà prise, veuillez recommencer ");
+					if (c7=='7') c7=remplirCase();
+					else casePrise();
 					break;
 				case 8 : 
-					if (c8=='8') 
-						c8=remplirCase();
-					else 
-						System.out.println("Case déjà prise, veuillez recommencer ");
+					if (c8=='8') c8=remplirCase();
+					else casePrise();
 					break;
 				case 9 : 
-					if (c9=='9') 
-						c9=remplirCase();
-					else 
-						System.out.println("Case déjà prise, veuillez recommencer ");
+					if (c9=='9') c9=remplirCase();
+					else casePrise();
 					break;
 				default :
 					System.out.println("Erreur de choix, veuillez recommencer ");
@@ -119,7 +114,7 @@ public class Morpion
 		}
 		else System.out.println("Valeur impossible, tu triches!!!");
 	}
-	
+
 	public static int controleGagnant()
 	{
 		if ((c1==c2) && (c1==c3)) return quiGagne(c1); 
@@ -140,7 +135,25 @@ public class Morpion
 		
 		return 0;
 	}
-	
+
+	public static int choixJoueur()
+	{
+		Scanner scan=new Scanner(System.in);
+		System.out.println("Joueur"+joueur+" , choisissez une case entre 1 et 9 :");
+		return scan.nextInt();
+	}
+
+	public static int choixPC()
+	{
+		System.out.println("Ordinateur" + joueur + " , choisissez une case entre 1 et 9");
+		return (int)Math.floor(1 + (Math.random() * 10));
+	}
+
+	public static void casePrise()
+	{
+		System.out.println("Case déjà prise, veuillez recommencer ");
+	}
+
 	public static char remplirCase()
 	{
 		char valeur;
@@ -171,6 +184,17 @@ public class Morpion
 		c9='9';
 		joueur=1;
 		nbTour=0;
+		joueurPc=0;
 		System.out.println("Bonjour et bienvenu dans votre jeu de Morpion");
+		Scanner scanPC=new Scanner(System.in);
+		System.out.println("Voulez-vous jouer contre un pc ? oui/non");
+		String playPC=scanPC.next();
+		if (playPC.equals("oui"))
+		{
+			System.out.println("Voulez-vous faire jouer 2 pc ensemble ? oui/non");
+			playPC=scanPC.next();
+			if (playPC.equals("oui")) joueurPc = 2;
+			else joueurPc=1;
+		}
 	}
 }
