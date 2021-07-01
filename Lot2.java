@@ -109,21 +109,26 @@ public class Lot2 {
 
     public static int plusPetit3(int x, int y, int z)
     {
-        if ((x<y) && (x<z)) return x;
+        return plusPetit2(plusPetit2(x,y),z);
+        /*if ((x<y) && (x<z)) return x;
         else if ((y<x) && (y<z)) return y;
-        else return z;
+        else return z;*/
     }
 
     public static int plusPetit2(int x, int y)
     {
-        if (x<y) return x;
-        else return y;
+        //if (x<y) return x;
+        //else return y;
+        //ecriture simplifié
+        return x<y? x:y;
     }
 
     public static int plusGrand2(int x, int y)
     {
-        if (x>y) return x;
-        else return y;
+        // if (x>y) return x;
+        // else return y;
+        // ecriture simplifiée
+        return x>y? x:y;
     }
 
     public static void signe(float x)
@@ -131,11 +136,11 @@ public class Lot2 {
         if (x<0) System.out.println("négatif");
         else if (x>0) System.out.println("positif");
         else System.out.println("nul");
+
     }
 
     public static boolean estMajeur(int age)
     {
-        if (age>=18) return true;
-        else return false;
+        return age>=18;
     }
 }
