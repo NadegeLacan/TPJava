@@ -27,5 +27,8 @@ public class Main {
         {
             System.out.println("BATAILLE");
         }
+
+        exoList test = new exoList();
+        test.fill(13);
     }
 }
