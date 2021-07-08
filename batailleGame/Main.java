@@ -4,8 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
         // creation des joueurs
-        Player P1 = new Player("Le bon",13);
-        Player P2 = new Player("La brute",13);
+        Player P1 = new Player("Angleterre",10);
+        Player P2 = new Player("Danemark",10);
 
         // On tire une carte pour le joueur
         Card currentCardP1=P1.pullACard();

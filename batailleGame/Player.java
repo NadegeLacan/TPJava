@@ -9,8 +9,8 @@ public class Player {
     public Player(String pName, int size)
     {
         this.mName=pName;
-        this.mDeckPlayer = new Deck(size);
-        this.mDeckPlayer.initDeck();
+        this.mDeckPlayer = new Deck();
+        this.mDeckPlayer.initDeck(size);
     }
 
     /**Méthodes de la class Player*/

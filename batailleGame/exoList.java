@@ -22,8 +22,19 @@ public class exoList
 
     public void print()
     {
-        
+        for(int i=0;i<myCardList.size();i++)
+        {
+            System.out.println(myCardList.get(i));
+        }
     }
-    //Public CardgetFirstElement()
-    //Public CardgetElement(intpIndex)
+
+    public Card getFirstElement()
+    {
+        return myCardList.get(0);
+    }
+
+    public Card getElement(int pIndex)
+    {
+        return myCardList.get(pIndex);
+    }
 }
