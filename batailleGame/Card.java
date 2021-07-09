@@ -52,9 +52,9 @@ public class Card {
         return this.mColor;
     }
 
+    @Override
     public String toString()
     {
         return this.mCardName + " DE " + this.mColor;
     }
-
 }

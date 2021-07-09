@@ -2,8 +2,8 @@ package batailleGame;
 
 public class Player {
     /** Attribut de la class player*/
-    private String mName; // nom
-    private Deck mDeckPlayer; //deck de notre joueur
+    protected String mName; // nom
+    protected Deck mDeckPlayer; //deck de notre joueur
 
     /* CONSTRUCTEUR */
     public Player(String pName, int size)

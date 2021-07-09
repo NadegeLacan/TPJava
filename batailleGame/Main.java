@@ -1,11 +1,15 @@
 package batailleGame;
 
-public class Main {
+public class Main
+{
 
     public static void main(String[] args) {
         // creation des joueurs
         Player P1 = new Player("Angleterre",10);
-        Player P2 = new Player("Danemark",10);
+        Player P2 = new PlayerHuman();
+
+        Card lCard1=new Card(Card.Color.COEUR,Card.CardName.AS);
+        System.out.println(lCard1);
 
         while (P1.nbCard()>0 || P2.nbCard()>0)
         {
