@@ -16,9 +16,13 @@ public class Deck {
     // Fonction nous permettant de consulter la 1ère carte de notre jeu
     public Card getFirstCardDeck()
     {
-        return this.myCardList.get(0);
+        return this.myCardList.remove(0);
     }
 
+    public int getSize()
+    {
+        return this.myCardList.size();
+    }
     //Fonction nous permettant d'ajouter une carte à notre jeu
     public void addCard(Card loosingCard)
     {

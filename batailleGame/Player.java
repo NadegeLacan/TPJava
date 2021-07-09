@@ -27,6 +27,11 @@ public class Player {
         return this.mDeckPlayer.getFirstCardDeck();
     }
 
+    public int nbCard()
+    {
+        return this.mDeckPlayer.getSize();
+    }
+
     // Fonction nous permettant de modifier le nom de notre joueur
     public void setName(String name)
     {
